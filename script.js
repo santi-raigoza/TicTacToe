@@ -1,4 +1,3 @@
-
 const gameBoard = (function() {
     let board = [];
     let size = 3;
@@ -9,18 +8,12 @@ const gameBoard = (function() {
         }
     }
 
-    const placeMark = function(player, row, col) {
-        if (player === 1) {
-            board[row][col] = "X";
-        } else if (player === 2) {
-            board[row][col] = "O";
-        } else {
-            console.log("Improper player information");
-        }
+    const placeMark = function(mark, row, col) {
+        board[row][col] = mark;
     }
 
     const displayBoard = function() {
-        return board;
+        console.log(board);
     }
 
     return {
@@ -46,16 +39,17 @@ function Player(playerNumber) {
     }
 }
 
-player1Name = prompt("Player 1:");
+// player1Name = prompt("Player 1:"); 
+player1Name = "Santi";
 player1 = Player(1);
 player1.playerName = player1Name;
 
-player2Name = prompt("Player 2:");
+// player2Name = prompt("Player 2:");
+player2Name = "Mia";
 player2 = Player(2);
 player2.playerName = player2Name;
 
-console.log(player1);
-console.log(player2);
-
-gameBoard.placeMark(1, 1, 2);
-console.log(gameBoard.displayBoard());
+gameBoard.placeMark(player1.playerMark, 1, 1);
+gameBoard.placeMark(player2.playerMark, 1, 2);
+gameBoard.placeMark(player1.playerMark, 0, 2);
+gameBoard.displayBoard();
