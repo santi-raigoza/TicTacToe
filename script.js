@@ -55,11 +55,12 @@ const Game = (function() {
             console.log(`${name} placed ${mark} at (${row}, ${column})`);
             gameBoard.displayBoard();
             
-            // return true if win, false if not
             if (checkWin(mark, row, column)) {
                 console.log(`${name} wins!`);
-            }
-
+            } else if (checkDraw()) {
+                console.log("The game is a draw!");
+            } 
+            
             currentPlayerIndex = (currentPlayerIndex + 1) % 2;
         } else {
             console.log("Spot taken, try again.");
@@ -73,7 +74,7 @@ const Game = (function() {
         let win = true;
 
         // check row for win
-        if (board[row].every(item => item === mark)) {
+        if (board[row].every(cell => cell === mark)) {
             console.log(`${mark} won by row`);
             return true;
         } 
@@ -111,19 +112,38 @@ const Game = (function() {
                 return true;
             }
         }
+
+        return false;
+
+    }
+
+    const checkDraw = function() {
+        const board = gameBoard.getBoard();
+        
+        // check for a draw
+        if (board.flat().every(cell => cell !== "")) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     return {
         playRound,
-        checkWin
+        checkWin,
+        checkDraw
     };
 })();
 
 // Example manual test after DOM loads
 document.addEventListener("DOMContentLoaded", () => {
-    Game.playRound(0, 2);
-    Game.playRound(0, 1);
     Game.playRound(1, 1);
+    Game.playRound(0, 0);
     Game.playRound(1, 0);
     Game.playRound(2, 0);
+    Game.playRound(0, 1);
+    Game.playRound(2, 1);
+    Game.playRound(0, 2);
+    Game.playRound(1, 2);
+    Game.playRound(2, 2);
 });
