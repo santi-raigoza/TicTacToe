@@ -65,12 +65,12 @@ const Game = (function() {
             console.log("Spot taken, try again.");
         }
 
-        
     };
 
     const checkWin = function(mark, row, col) {
         const board = gameBoard.getBoard();
         const size = board.length;
+        let win = true;
 
         // check row for win
         if (board[row].every(item => item === mark)) {
@@ -88,24 +88,28 @@ const Game = (function() {
         if (row === col) {
             for (let i = 0; i < size; i++) {
                 if (board[i][i] !== mark) {
-                    return false;
+                    win = false;
                 }
             }
 
-            console.log(`${mark} won by diagonal`);
-            return true;
+            if (win) {
+                console.log(`${mark} won by diagonal`);
+                return true;
+            }
         } 
         
         // check bottom left to top right diagonal
         if (row + col === size - 1) {
-            for (let i = 0; i < size; i) {
+            for (let i = 0; i < size; i++) {
                 if (board[i][size - 1 - i] !== mark) {
-                    return false;
+                    win = false;
                 }
             }
 
-            console.log(`${mark} won by diagonal`);
-            return true;
+            if (win) {
+                console.log(`${mark} won by diagonal`);
+                return true;
+            }
         }
     }
 
@@ -117,11 +121,9 @@ const Game = (function() {
 
 // Example manual test after DOM loads
 document.addEventListener("DOMContentLoaded", () => {
-    Game.playRound(0, 0);
-    Game.playRound(0, 0);
+    Game.playRound(0, 2);
+    Game.playRound(0, 1);
     Game.playRound(1, 1);
     Game.playRound(1, 0);
-    Game.playRound(0, 1);
     Game.playRound(2, 0);
-    Game.playRound(2, 2);
 });
