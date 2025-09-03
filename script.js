@@ -8,13 +8,18 @@ const gameBoard = (function() {
         }
     }
 
+    // place mark if spot open
     const placeMark = function(mark, row, col) {
-        board[row][col] = mark;
-    }
+        if (board[row][col] === "") {
+            board[row][col] = mark;
+            return true;
+        }
+        return false; // spot already taken
+    };
 
     const displayBoard = function() {
         console.log(board);
-    }
+    };
 
     return {
         placeMark,
@@ -22,34 +27,44 @@ const gameBoard = (function() {
     };
 })();
 
-function Player(playerNumber) {
-
-    let playerName = "";
-    let playerMark = "";
-
-    if (playerNumber === 1) {
-        playerMark = "X";
-    } else if (playerNumber === 2) {
-        playerMark = "O";
-    }
-
+function Player(name, mark) {
     return {
-        playerName,
-        playerMark
-    }
+        getName: () => name,
+        getMark: () => mark
+    };
 }
 
-// player1Name = prompt("Player 1:"); 
-player1Name = "Santi";
-player1 = Player(1);
-player1.playerName = player1Name;
+const Game = (function() {
+    const player1 = Player(prompt("Enter Player 1 name:"), "X");
+    const player2 = Player(prompt("Enter Player 2 name:"), "O");
 
-// player2Name = prompt("Player 2:");
-player2Name = "Mia";
-player2 = Player(2);
-player2.playerName = player2Name;
+    const players = [player1, player2];
+    let currentPlayerIndex = 0;
 
-gameBoard.placeMark(player1.playerMark, 1, 1);
-gameBoard.placeMark(player2.playerMark, 1, 2);
-gameBoard.placeMark(player1.playerMark, 0, 2);
-gameBoard.displayBoard();
+    const playRound = function(row, column) {
+        const currentPlayer = players[currentPlayerIndex];
+
+        if (gameBoard.placeMark(currentPlayer.getMark(), row, column)) {
+            console.log(`${currentPlayer.getName()} placed ${currentPlayer.getMark()} at (${row}, ${column})`);
+            gameBoard.displayBoard();
+            currentPlayerIndex = (currentPlayerIndex + 1) % 2;
+        } else {
+            console.log("Spot taken, try again.");
+        }
+    };
+
+    return {
+        playRound
+    };
+})();
+
+// Example manual test after DOM loads
+document.addEventListener("DOMContentLoaded", () => {
+    Game.playRound(0, 0);
+    Game.playRound(0, 0);
+    Game.playRound(1, 1);
+    Game.playRound(1, 0);
+    Game.playRound(0, 1);
+    Game.playRound(2, 0);
+    Game.playRound(2, 2);
+});
