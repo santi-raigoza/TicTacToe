@@ -21,9 +21,14 @@ const gameBoard = (function() {
         console.log(board);
     };
 
+    const getBoard = function() {
+        return board;
+    }
+
     return {
         placeMark,
-        displayBoard
+        displayBoard,
+        getBoard
     };
 })();
 
@@ -43,18 +48,70 @@ const Game = (function() {
 
     const playRound = function(row, column) {
         const currentPlayer = players[currentPlayerIndex];
+        const mark = currentPlayer.getMark();
+        const name = currentPlayer.getName();
 
-        if (gameBoard.placeMark(currentPlayer.getMark(), row, column)) {
-            console.log(`${currentPlayer.getName()} placed ${currentPlayer.getMark()} at (${row}, ${column})`);
+        if (gameBoard.placeMark(mark, row, column)) {
+            console.log(`${name} placed ${mark} at (${row}, ${column})`);
             gameBoard.displayBoard();
+            
+            // return true if win, false if not
+            if (checkWin(mark, row, column)) {
+                console.log(`${name} wins!`);
+            }
+
             currentPlayerIndex = (currentPlayerIndex + 1) % 2;
         } else {
             console.log("Spot taken, try again.");
         }
+
+        
     };
 
+    const checkWin = function(mark, row, col) {
+        const board = gameBoard.getBoard();
+        const size = board.length;
+
+        // check row for win
+        if (board[row].every(item => item === mark)) {
+            console.log(`${mark} won by row`);
+            return true;
+        } 
+        
+        // check column for win
+        if (board.every(r => r[col] === mark)) {
+            console.log(`${mark} won by column`);
+            return true;
+        } 
+        
+        // check top left to bottom right diagonal
+        if (row === col) {
+            for (let i = 0; i < size; i++) {
+                if (board[i][i] !== mark) {
+                    return false;
+                }
+            }
+
+            console.log(`${mark} won by diagonal`);
+            return true;
+        } 
+        
+        // check bottom left to top right diagonal
+        if (row + col === size - 1) {
+            for (let i = 0; i < size; i) {
+                if (board[i][size - 1 - i] !== mark) {
+                    return false;
+                }
+            }
+
+            console.log(`${mark} won by diagonal`);
+            return true;
+        }
+    }
+
     return {
-        playRound
+        playRound,
+        checkWin
     };
 })();
 
