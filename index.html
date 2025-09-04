@@ -7,34 +7,36 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="header">
-        <h1>Tic Tac Toe</h1>
-    </header>
-    <main class="main">
-        <div class="board-container">
-            <div class="cell" data-row="0" data-col="0"></div>
-            <div class="cell" data-row="1" data-col="0"></div>
-            <div class="cell" data-row="2" data-col="0"></div>
-            <div class="cell" data-row="0" data-col="1"></div>
-            <div class="cell" data-row="1" data-col="1"></div>
-            <div class="cell" data-row="2" data-col="1"></div>
-            <div class="cell" data-row="0" data-col="2"></div>
-            <div class="cell" data-row="1" data-col="2"></div>
-            <div class="cell" data-row="2" data-col="2"></div>
-        </div>
-    </main>
-    <footer class="footer">
-        <div>
-            <p>Current player:</p>
-            <p id="currentPlayer">player</p>
-        </div>
-    </footer>
+    <div class="container">
+        <header class="header">
+            <h1>Tic Tac Toe</h1>
+        </header>
+        <main class="main">
+            <div class="board-container">
+                <div class="cell" data-row="0" data-col="0"></div>
+                <div class="cell" data-row="1" data-col="0"></div>
+                <div class="cell" data-row="2" data-col="0"></div>
+                <div class="cell" data-row="0" data-col="1"></div>
+                <div class="cell" data-row="1" data-col="1"></div>
+                <div class="cell" data-row="2" data-col="1"></div>
+                <div class="cell" data-row="0" data-col="2"></div>
+                <div class="cell" data-row="1" data-col="2"></div>
+                <div class="cell" data-row="2" data-col="2"></div>
+            </div>
+        </main>
+        <footer class="footer">
+            <div>
+                <p>Current player:</p>
+                <p id="currentPlayer">player</p>
+            </div>
+        </footer>
+    </div>
     <dialog class="modal" id="playersModal" open>
         <form class="form" id="playersForm" method="dialog">
             <h2 class="form-title">Enter Players:</h2>
-            <input type="text" placeholder="Player 1" require>
-            <input type="text" placeholder="Player 2" required>
-            <button>Submit</button>
+            <input id="firstPlayerName" type="text" placeholder="Player 1" required>
+            <input id="secondPlayerName" type="text" placeholder="Player 2" required>
+            <button id="playersButton">Submit</button>
         </form>
     </dialog>
     <script src="script.js"></script>

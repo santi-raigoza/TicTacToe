@@ -135,6 +135,11 @@ const Game = (function() {
     };
 })();
 
+const form = document.getElementById("playersModal");
+const playerButton = document.getElementById("playersButton");
+const firstPlayerName = document.getElementById("firstPlayerName");
+const secondPlayerName = document.getElementById("secondPlayerName");
+
 // Example manual test after DOM loads
 // document.addEventListener("DOMContentLoaded", () => {
 //     Game.playRound(1, 1);
