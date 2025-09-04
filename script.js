@@ -40,8 +40,8 @@ function Player(name, mark) {
 }
 
 const Game = (function() {
-    const player1 = Player(prompt("Enter Player 1 name:"), "X");
-    const player2 = Player(prompt("Enter Player 2 name:"), "O");
+    // const player1 = Player(prompt("Enter Player 1 name:"), "X");
+    // const player2 = Player(prompt("Enter Player 2 name:"), "O");
 
     const players = [player1, player2];
     let currentPlayerIndex = 0;
@@ -136,14 +136,14 @@ const Game = (function() {
 })();
 
 // Example manual test after DOM loads
-document.addEventListener("DOMContentLoaded", () => {
-    Game.playRound(1, 1);
-    Game.playRound(0, 0);
-    Game.playRound(1, 0);
-    Game.playRound(2, 0);
-    Game.playRound(0, 1);
-    Game.playRound(2, 1);
-    Game.playRound(0, 2);
-    Game.playRound(1, 2);
-    Game.playRound(2, 2);
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//     Game.playRound(1, 1);
+//     Game.playRound(0, 0);
+//     Game.playRound(1, 0);
+//     Game.playRound(2, 0);
+//     Game.playRound(0, 1);
+//     Game.playRound(2, 1);
+//     Game.playRound(0, 2);
+//     Game.playRound(1, 2);
+//     Game.playRound(2, 2);
+// });

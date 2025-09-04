@@ -1,0 +1,56 @@
+/* CSS Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body,
+html {
+    height: 100vh;
+}
+
+/* Utils */
+body {
+    font-family: Arial, sans-serif;
+    display: grid;
+    grid-template-rows: 150px 1fr 1fr;
+}
+
+body > * {
+    justify-self: center;
+}
+
+/* Header */
+.header {
+    align-self: center;
+}
+
+.header > h1 {
+    font-size: 90px;
+}
+
+/* Main */
+.board-container {
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    grid-template-rows: repeat(3, 200px);
+}
+
+.cell {
+    border: 1px solid black;
+}
+
+/* Footer */
+.footer > div {
+    display: flex;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+.footer p {
+    font-size: 40px;
+    font-weight: bold;
+}   
