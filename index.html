@@ -14,31 +14,46 @@
         <main class="main">
             <div class="board-container">
                 <div class="cell" data-row="0" data-col="0"></div>
-                <div class="cell" data-row="1" data-col="0"></div>
-                <div class="cell" data-row="2" data-col="0"></div>
                 <div class="cell" data-row="0" data-col="1"></div>
-                <div class="cell" data-row="1" data-col="1"></div>
-                <div class="cell" data-row="2" data-col="1"></div>
                 <div class="cell" data-row="0" data-col="2"></div>
+                <div class="cell" data-row="1" data-col="0"></div>
+                <div class="cell" data-row="1" data-col="1"></div>
                 <div class="cell" data-row="1" data-col="2"></div>
+                <div class="cell" data-row="2" data-col="0"></div>
+                <div class="cell" data-row="2" data-col="1"></div>
                 <div class="cell" data-row="2" data-col="2"></div>
             </div>
         </main>
         <footer class="footer">
             <div>
                 <p>Current player:</p>
-                <p id="currentPlayer">player</p>
+                <p id="currentPlayer">X</p>
             </div>
         </footer>
     </div>
+    
+    <!-- Player Names Modal -->
     <dialog class="modal" id="playersModal" open>
         <form class="form" id="playersForm" method="dialog">
-            <h2 class="form-title">Enter Players:</h2>
-            <input id="firstPlayerName" type="text" placeholder="Player 1" required>
-            <input id="secondPlayerName" type="text" placeholder="Player 2" required>
-            <button id="playersButton">Submit</button>
+            <h2 class="form-title">Enter Players</h2>
+            <input id="firstPlayerName" type="text" placeholder="Player 1 (X)" required>
+            <input id="secondPlayerName" type="text" placeholder="Player 2 (O)" required>
+            <button type="submit" id="playersButton">Start Game</button>
         </form>
     </dialog>
+
+    <!-- Game Over Modal -->
+    <dialog class="modal" id="gameOverModal">
+        <div class="game-over">
+            <h2 id="gameOverTitle">Game Over!</h2>
+            <p id="gameOverMessage">Player wins!</p>
+            <div class="button-container">
+                <button class="play-again-btn" id="playAgainBtn">Play Again</button>
+                <button class="new-players-btn" id="newPlayersBtn">New Players</button>
+            </div>
+        </div>
+    </dialog>
+
     <script src="script.js"></script>
 </body>
 </html>
