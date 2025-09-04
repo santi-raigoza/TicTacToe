@@ -26,9 +26,17 @@
     <footer class="footer">
         <div>
             <p>Current player:</p>
-            <p id="currentPlayer">pina</p>
+            <p id="currentPlayer">player</p>
         </div>
     </footer>
+    <dialog class="modal" id="playersModal" open>
+        <form class="form" id="playersForm" method="dialog">
+            <h2 class="form-title">Enter Players:</h2>
+            <input type="text" placeholder="Player 1" require>
+            <input type="text" placeholder="Player 2" required>
+            <button>Submit</button>
+        </form>
+    </dialog>
     <script src="script.js"></script>
 </body>
 </html>

@@ -40,7 +40,17 @@ body > * {
 }
 
 .cell {
+    background-color: lightblue;
     border: 1px solid black;
+    cursor: pointer;
+}
+
+.cell:hover {
+    filter: brightness(90%);
+}
+
+.cell:active {
+    filter: brightness(70%);
 }
 
 /* Footer */
@@ -54,3 +64,33 @@ body > * {
     font-size: 40px;
     font-weight: bold;
 }   
+
+/* Modals */
+.modal {
+    width: 400px;
+    height: auto;
+    padding: 2rem;
+    padding-bottom: 3rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-110%, -50%); 
+    margin: auto;
+    border-radius: 5%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.form * {
+    font-size: 20px;
+    padding: 0.5rem;
+}
+
+.form-title {
+    font-size: 40px;
+}
+
